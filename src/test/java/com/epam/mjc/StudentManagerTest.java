@@ -45,7 +45,11 @@ public class StudentManagerTest {
 
   @Test
   public void testIDsNotChangedV2() {
-    assertEquals(Student.ARTUR, manager.find(Arrays.stream(Student.values()).map(Student::getId).max(Long::compare).get()));
+    try {
+      assertEquals(Student.ARTUR, manager.find(Arrays.stream(Student.values()).map(Student::getId).max(Long::compare).get()));
+    } catch (IllegalArgumentException e) {
+      e.printStackTrace();
+    }
 
   }
 
